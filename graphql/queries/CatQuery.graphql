@@ -1,0 +1,24 @@
+type Query @admin(read: true) {
+  cats: [Cat!]!
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@all")
+
+  cat(id: ID!): Cat
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@find")
+
+  findCatsByName(name: String!, mode: String): [Cat!]!
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@findCatsByName")
+
+  findCatByNameOrDescription(
+    search: String!
+    mode: String
+    operator: String
+  ): [Cat!]!
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@findCatsByNameOrDetail")
+
+  findCatByNameExact(name: String!): Cat
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@findByNameExact")
+
+  lastCat: Cat
+    @field(resolver: "App\\GraphQL\\Queries\\CatQuery@last")
+}
+

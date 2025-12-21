@@ -1,0 +1,13 @@
+type Cat {
+  id: ID!
+  name: String!
+  des: String
+  dess: String
+  filer: String
+  filename: String
+  mime: String
+  sizer: String
+  extension: String
+  created_at: DateTime
+  updated_at: DateTime
+}

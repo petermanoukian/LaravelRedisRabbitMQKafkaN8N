@@ -1,0 +1,7 @@
+#import scalars.graphql
+#import types/Cat.graphql
+#import queries/CatQuery.graphql
+#import mutations/CatMutation.graphql
+
+
+

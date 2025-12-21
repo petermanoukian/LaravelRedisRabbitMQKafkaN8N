@@ -1,0 +1,29 @@
+type Mutation @admin(write: true) {
+  createCat(
+    name: String!
+    des: String
+    dess: String
+    file: Upload
+  ): Cat
+    @field(resolver: "App\\GraphQL\\Mutations\\CatMutation@createCat")
+
+  updateCat(
+    id: ID!
+    name: String
+    des: String
+    dess: String
+    file: Upload
+  ): Cat
+    @field(resolver: "App\\GraphQL\\Mutations\\CatMutation@updateCat")
+
+  deleteCat(id: ID!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\CatMutation@deleteCat")
+
+  deleteCats(ids: [ID!]!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\CatMutation@deleteCats")
+
+}
+
+
+
+
