@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class ImageUploadService
 {
-
     public function upload(
         ImageUploadRequest $request,
         string $inputName,
@@ -18,60 +17,36 @@ class ImageUploadService
         string $smallFolder,
         int $maxWidth = 1500,
         int $maxHeight = 1000,
-        array $allowedMimeTypes = [
-            'image/jpeg',
-            'image/gif',
-            'image/webp',
-            'image/png',
-            'image/tiff',
-        ],
-        int $maxFileSize = 9920,
         ?string $baseFileName = null
     ): ?array 
     {
-        // Merge dynamic allowedMimes and maxFileSize into request for validation
-        $request->merge([
-            'allowedMimeTypes' => $allowedMimeTypes,
-            'maxFileSize'      => $maxFileSize,
-        ]);
-        // ✅ enforce validation before moving the file
-        
-
-        try {
-            $request->validate($request->rules());
-            /*
-            Log::info('✅ Image validation passed for input "' . $inputName . '"', [
-                'rules' => $request->rules(),
-                'mime'  => $request->file($inputName)?->getMimeType(),
-            ]);
-            */
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('❌ Image validation failed for input "' . $inputName . '"', [
-                'errors' => $e->errors(),
-                'mime'   => $request->file($inputName)?->getMimeType(),
-            ]);
-            throw $e; // stop execution, don’t move the file
-        }
-
+        Log::info("ImageUploadService: starting upload for input [$inputName]");
         if (!$request->hasFile($inputName)) {
             return null;
         }
 
         /** @var UploadedFile $file */
         $file = $request->file($inputName);
+
+
+        Log::info("ImageUploadService: file received", 
+        [ 'originalName' => $file->getClientOriginalName(), 'extension' => $file->getClientOriginalExtension(), 
+        'size' => $file->getSize(), 'mime' => $file->getMimeType(), ]);
+
+
         $originalName = $file->getClientOriginalName();
-        $extension = strtolower($file->getClientOriginalExtension());
+        $extension    = strtolower($file->getClientOriginalExtension());
 
         // Use original name as base, sanitize
         if (is_null($baseFileName)) {
             $baseFileName = pathinfo($originalName, PATHINFO_FILENAME);
         }
-        //$baseFileName = str_replace(' ', '-', $baseFileName);
         $baseFileName = str_replace([' ', '/'], '-', $baseFileName);
-        $randomSuffix = time() . '_' . uniqid();
-        $fileName = $baseFileName . '-' . $randomSuffix . '.' . $extension;
 
-        // Paths using public_path (relative from public/)
+        $randomSuffix = time() . '_' . uniqid();
+        $fileName     = $baseFileName . '-' . $randomSuffix . '.' . $extension;
+
+        // Paths relative to public/
         $relativeLargePath = "{$largeFolder}/{$fileName}";
         $relativeSmallPath = "{$smallFolder}/{$fileName}";
 
@@ -79,27 +54,14 @@ class ImageUploadService
         $smallPath = public_path($relativeSmallPath);
 
 
-        /*
+        Log::info("ImageUploadService: saving paths", [ 'largePath' => $largePath, 'smallPath' => $smallPath, ]);
 
-        Log::info('📂 ImageUploadService paths', [
-            'largeFolder'       => $largeFolder,
-            'smallFolder'       => $smallFolder,
-            'relativeLargePath' => $relativeLargePath,
-            'relativeSmallPath' => $relativeSmallPath,
-            'largePath'         => $largePath,
-            'smallPath'         => $smallPath
-        ]);
-        */
-        
         // Ensure folders exist
-        $largeDir = dirname($largePath);
-        if (!file_exists($largeDir)) {
-            mkdir($largeDir, 0755, true);
+        if (!file_exists(dirname($largePath))) {
+            mkdir(dirname($largePath), 0755, true);
         }
-
-        $smallDir = dirname($smallPath);
-        if (!file_exists($smallDir)) {
-            mkdir($smallDir, 0755, true);
+        if (!file_exists(dirname($smallPath))) {
+            mkdir(dirname($smallPath), 0755, true);
         }
 
         // Process with Intervention Image v3
@@ -110,18 +72,19 @@ class ImageUploadService
         if ($image->width() > $maxWidth || $image->height() > $maxHeight) {
             $image->resize($maxWidth, $maxHeight, function ($constraint) {
                 $constraint->aspectRatio();
-                $constraint->upsize(); // Don't upscale smaller images
+                $constraint->upsize();
             });
+            Log::info("ImageUploadService: resized image");
         }
         $image->save($largePath);
 
-        // Thumbnail: e.g., cover to 200x200 (cropped square, adjust as needed)
+        // Thumbnail: cropped square
         $thumbImage = $manager->read($file->getPathname());
         $thumbImage->cover(200, 200)->save($smallPath);
 
         return [
-            'large' => $relativeLargePath,
-            'small' => $relativeSmallPath,
+            'large'         => $relativeLargePath,
+            'small'         => $relativeSmallPath,
             'original_name' => $originalName,
         ];
     }

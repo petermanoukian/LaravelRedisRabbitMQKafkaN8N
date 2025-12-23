@@ -47,7 +47,7 @@ class ImageUploadService
 
         // Paths using public_path (relative from public/)
         $relativeLargePath = "{$largeFolder}/{$fileName}";
-        $relativeSmallPath = "{$smallFolder}/thumb_{$fileName}";
+        $relativeSmallPath = "{$smallFolder}/{$fileName}";
 
         $largePath = public_path($relativeLargePath);
         $smallPath = public_path($relativeSmallPath);

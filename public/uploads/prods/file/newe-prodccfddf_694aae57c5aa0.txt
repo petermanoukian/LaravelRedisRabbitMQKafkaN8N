@@ -1,0 +1,5 @@
+[2025-11-27 08:00:01] production.WARNING: [MCP-DB-CONN] Connection attempt 1/3 failed. Retrying in 5 seconds.
+[2025-11-27 08:00:06] production.WARNING: [MCP-DB-CONN] Connection attempt 2/3 failed. Host 10.0.0.5 not responding.
+[2025-11-27 08:00:11] production.CRITICAL: [MCP-DB-CONN] Database connection failed after 3 attempts.
+[2025-11-27 08:00:11] production.ERROR: SQLSTATE[HY000] [2002] Connection refused (Connection timed out).
+[2025-11-27 08:00:11] production.ERROR: [Laravel] Service dependency failure. Shutting down worker process.

@@ -25,21 +25,15 @@ class CatController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->input('per_page', 15);
-
-        // Only select id, name, filer, filename, mime, sizer, extension
-        $cats = $this->cats->paginate($perPage, ['id', 'name', 'filer', 'filename', 'mime', 'sizer', 'extension']);
-
+        $cats = $this->cats->paginate( $perPage, ['id', 'name', 'filer', 'filename', 'mime', 'sizer', 'extension'], 
+        'id', 'desc', false, true );
         return view('admin.cats.index', compact('cats'));
     }
 
     public function indexJson(Request $request)
     {
-        // choose only id, name, filer
         $fields = ['id', 'name', 'filer', 'filename', 'mime', 'sizer', 'extension'];
-
-        // call select() without $perPage → returns get()
         $cats = $this->cats->select($fields, 'id', 'desc');
-
         return response()->json($cats);
     }
 

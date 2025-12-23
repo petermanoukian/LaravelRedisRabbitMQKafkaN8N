@@ -1,37 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Prod;
-use App\Models\Traits\HasFileAttributes;
-
-class Cat extends Model
+trait HasFileAttributes
 {
-    
-    use HasFileAttributes;
-    // Table name (optional if it matches plural of model)
-    protected $table = 'cats';
-
-    // Allow mass assignment for these fields
-    protected $fillable = [
-        'name',
-        'des',
-        'dess',
-        'filer',
-        'filename',
-        'mime', 
-        'sizer',
-        'extension',
-    ]; 
-
-    // Relationships
-    public function prods()
-    {
-        return $this->hasMany(Prod::class, 'catid');
-    }
-
-    /*
     protected const MIMES_WE_KNOW_OF = [
         'text/plain',
         'application/pdf',
@@ -78,20 +50,16 @@ class Cat extends Model
     {
         $mime = strtolower(trim((string) $this->mime));
 
-        // If the field itself is missing
         if ($mime === '') {
             return 'No MIME provided';
         }
 
-        // If MIME isn’t one of the mimes we know of
         if (!in_array($mime, self::MIMES_WE_KNOW_OF, true)) {
             return 'Surprising MIME type';
         }
 
-        // Known MIME → friendly label if available, else playful default
         return self::FRIENDLY_MIME_NAMES[$mime] ?? 'Surprising MIME type';
     }
-
 
     public function getSizeLabelAttribute(): string
     {
@@ -107,7 +75,4 @@ class Cat extends Model
 
         return round($value, 2) . ' ' . $units[$power];
     }
-    */
-
-
 }

@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\CatRepositoryInterface;
+use App\Repositories\Contracts\ProdRepositoryInterface; 
 use App\Services\Interface\CatServiceInterface;
+use App\Services\FileUploaderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -11,56 +13,71 @@ class CatService implements CatServiceInterface
 {
     protected CatRepositoryInterface $cats;
     protected FileUploaderService $fileUploader;
+    protected ProdRepositoryInterface $prods;
 
-    public function __construct(CatRepositoryInterface $cats, FileUploaderService $fileUploader)
+    public function __construct(CatRepositoryInterface $cats, FileUploaderService $fileUploader, ProdRepositoryInterface $prods)
     {
         $this->cats = $cats;
         $this->fileUploader = $fileUploader;
+        $this->prods = $prods;
     }
 
-    public function all(string $orderBy = 'id', string $direction = 'desc')
-    {
-        return $this->cats->all($orderBy, $direction);
+        public function all(
+        string $orderBy = 'id',
+        string $direction = 'desc',
+        bool $withProds = false,
+        bool $withProdCount = false
+    ) {
+        return $this->cats->all($orderBy, $direction, $withProds, $withProdCount);
     }
-
 
     public function paginate(
         int $perPage = 15,
         array $fields = ['*'],
         string $orderBy = 'id',
-        string $direction = 'desc'
+        string $direction = 'desc',
+        bool $withProds = false,
+        bool $withProdCount = false
     ) {
-        return $this->cats->paginate($perPage, $fields, $orderBy, $direction);
+        return $this->cats->paginate($perPage, $fields, $orderBy, $direction, $withProds, $withProdCount);
     }
 
     public function select(
         array $fields,
         string $orderBy = 'id',
         string $direction = 'desc',
-        ?int $perPage = null
+        ?int $perPage = null,
+        bool $withProds = false,
+        bool $withProdCount = false
     ) {
-        return $this->cats->select($fields, $orderBy, $direction, $perPage);
+        return $this->cats->select($fields, $orderBy, $direction, $perPage, $withProds, $withProdCount);
     }
-
 
     public function search(
         array $criteria,
         string $orderBy = 'id',
         string $direction = 'desc',
         ?int $perPage = null,
-        array $fields = ['*']
+        array $fields = ['*'],
+        bool $withProds = false,
+        bool $withProdCount = false
     ) {
-        return $this->cats->search($criteria, $orderBy, $direction, $perPage, $fields);
+        return $this->cats->search($criteria, $orderBy, $direction, $perPage, $fields, $withProds, $withProdCount);
     }
 
-    public function findById(int $id)
+    public function findById(int $id, bool $withProds = false, bool $withProdCount = false)
     {
-        return $this->cats->findById($id);
+        return $this->cats->findById($id, $withProds, $withProdCount);
     }
 
-    public function findByName(string $name, string $orderBy = 'id', string $direction = 'desc')
-    {
-        return $this->cats->findByName($name, $orderBy, $direction);
+    public function findByName(
+        string $name,
+        string $orderBy = 'id',
+        string $direction = 'desc',
+        bool $withProds = false,
+        bool $withProdCount = false
+    ) {
+        return $this->cats->findByName($name, $orderBy, $direction, $withProds, $withProdCount);
     }
 
     public function create(array $data, ?Request $request = null, string $folder = 'uploads/cats/file', string $baseFileName = 'cat')
@@ -115,11 +132,16 @@ class CatService implements CatServiceInterface
 
     public function delete(int $id)
     {
+        $this->prods->deleteByCatId($id);
         return $this->cats->delete($id);
     }
 
     public function deleteMany(array $ids)
     {
+        foreach ($ids as $catId) 
+        { 
+            $this->prods->deleteByCatId($catId); 
+        }
         return $this->cats->deleteMany($ids);
     }
 }

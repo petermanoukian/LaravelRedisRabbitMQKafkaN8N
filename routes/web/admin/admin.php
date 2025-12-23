@@ -15,3 +15,4 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 require __DIR__ . '/cats.php';
+require __DIR__ . '/prods.php';

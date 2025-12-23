@@ -7,24 +7,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Dashboard</a>
                     </li>
+
+                    <!-- Categories -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="catsDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Product categories
+                            Product Categories
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="catsDropdown">
                             <li><a class="dropdown-item" href="{{ route('admin.cats.index') }}">List Categories</a></li>
                             <li><a class="dropdown-item" href="{{ route('admin.cats.create') }}">Add Category</a></li>
                         </ul>
                     </li>
+
+                    <!-- Products -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="filesDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="prodsDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Files
+                            Products
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="filesDropdown">
-                            <li><a class="dropdown-item" href="#">Uploads</a></li>
-                            <li><a class="dropdown-item" href="#">Reports</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="prodsDropdown">
+                            <li><a class="dropdown-item" href="{{ route('admin.prods.index') }}">List Products</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.prods.create') }}">Add Product</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -53,4 +57,3 @@
         </div>
     </nav>
 </div>
-

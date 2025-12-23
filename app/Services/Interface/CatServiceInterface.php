@@ -6,19 +6,26 @@ use Illuminate\Http\Request;
 
 interface CatServiceInterface
 {
-    public function all(string $orderBy = 'id', string $direction = 'desc');
+    public function all(string $orderBy = 'id', string $direction = 'desc' ,  
+    bool $withProds = false,
+    bool $withProdCount = false);
+
     public function paginate(
-    int $perPage = 15,
-    array $fields = ['*'],
-    string $orderBy = 'id',
-    string $direction = 'desc'
+        int $perPage = 15,
+        array $fields = ['*'],
+        string $orderBy = 'id',
+        string $direction = 'desc',
+        bool $withProds = false,
+        bool $withProdCount = false
     );
 
    public function select(
         array $fields,
         string $orderBy = 'id',
         string $direction = 'desc',
-        ?int $perPage = null
+        ?int $perPage = null,
+        bool $withProds = false,
+        bool $withProdCount = false
     );
 
     
@@ -27,12 +34,17 @@ interface CatServiceInterface
         string $orderBy = 'id',
         string $direction = 'desc',
         ?int $perPage = null,
-        array $fields = ['*']
+        array $fields = ['*'],
+         bool $withProds = false,
+        bool $withProdCount = false
     );
 
 
-    public function findById(int $id);
-    public function findByName(string $name, string $orderBy = 'id', string $direction = 'desc');
+    public function findById(int $id,bool $withProds = false,bool $withProdCount = false);
+
+    public function findByName(string $name, string $orderBy = 'id', string $direction = 'desc',
+        bool $withProds = false,
+        bool $withProdCount = false);
 
     public function create(
         array $data,
