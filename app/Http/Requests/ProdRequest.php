@@ -51,7 +51,7 @@ class ProdRequest extends FormRequest
                 'mimetypes:text/plain,application/pdf,image/jpeg,image/jpg,image/png,image/gif,image/webp,image/tiff,
                               application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,
                               application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
-                              application/json,text/csv,application/csv,
+                              application/json,application/octet-stream,text/csv,application/csv,
                               application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,
                               text/html,application/xhtml+xml'
             ],

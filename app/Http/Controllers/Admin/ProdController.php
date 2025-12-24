@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FileUploadRequest;  
 use App\Http\Requests\ImageUploadRequest;
 use Illuminate\Support\Facades\Redis;
+use App\Events\Prod\ProdAdded;
+use App\Events\Prod\ProdUpdated;
+use App\Events\Prod\ProdDeleted;
 
 class ProdController extends Controller
 {
@@ -152,8 +155,9 @@ class ProdController extends Controller
         $thumbFolder  = 'uploads/prods/img/thumb';
         $baseFileName = $data['name'] ?? 'prod';
 
-        $this->prods->create( $data, $prodRequest, $fileRequest, $imageRequest, $fileFolder, $imageFolder, $thumbFolder, $baseFileName );
-        
+        $prodadded =$this->prods->create( $data, $prodRequest, $fileRequest, $imageRequest, 
+        $fileFolder, $imageFolder, $thumbFolder, $baseFileName );
+        event(new ProdAdded($prodadded)); 
         return redirect()->route('admin.prods.index', ['catid' => $data['catid']]) 
         ->with('success', 'Product created successfully.');
         
@@ -168,17 +172,24 @@ class ProdController extends Controller
         $thumbFolder  = 'uploads/prods/img/thumb';
         $baseFileName = $data['name'] ?? 'prod';
 
-        $this->prods->update(
+        $produpdated = $this->prods->update(
             $id, $data, $prodRequest,$fileRequest, $imageRequest, $fileFolder, $imageFolder, $thumbFolder, $baseFileName
         );
-
+        event(new ProdUpdated($produpdated));
         return redirect()->route('admin.prods.index', ['catid' => $data['catid']]) 
         ->with('success', 'Product updated successfully.');
     }
 
     public function destroy(int $id)
     {
-        $this->prods->delete($id);
+        $prod = $this->prods->findById($id);
+
+        if ($prod) {
+            // Fire the ProdDeleted event with payload
+            event(new ProdDeleted($id, $prod->name, $prod->des));
+
+            $this->prods->delete($id);
+        }
 
         return redirect()->route('admin.prods.index')
             ->with('success', 'Product deleted successfully.');
@@ -187,9 +198,19 @@ class ProdController extends Controller
     public function destroyMany(Request $request)
     {
         $ids = $request->input('ids', []);
+
+        foreach ($ids as $id) {
+            $prod = $this->prods->findById($id);
+            if ($prod) {
+                // Fire the ProdDeleted event for each product
+                event(new ProdDeleted($id, $prod->name, $prod->des));
+            }
+        }
+
         $this->prods->deleteMany($ids);
 
         return redirect()->route('admin.prods.index')
             ->with('success', 'Selected products deleted successfully.');
     }
+
 }

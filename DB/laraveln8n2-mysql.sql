@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 23, 2025 at 05:13 PM
+-- Generation Time: Dec 24, 2025 at 06:58 PM
 -- Server version: 5.7.40
 -- PHP Version: 8.2.0
 
@@ -71,17 +71,17 @@ CREATE TABLE IF NOT EXISTS `cats` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `cats_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `cats`
 --
 
 INSERT INTO `cats` (`id`, `originid`, `name`, `des`, `dess`, `filer`, `filename`, `mime`, `sizer`, `extension`, `created_at`, `updated_at`) VALUES
-(1, 243, 'with fileeee', 'gfgfg', '<p>gfgf</p>', 'uploads/cats/file/with-fileeee_69467274241d3.pdf', 'with-fileeee_69467274241d3.pdf', 'application/pdf', '98754', 'pdf', '2025-12-20 05:55:00', '2025-12-20 05:55:00'),
-(12, 254, 'with filessss', 'hhg', '<p>hhg</p>', 'uploads/cats/file/with-filessss_694a5bfb68d21.pdf', 'with-filessss_694a5bfb68d21.pdf', 'application/pdf', '760627', 'pdf', '2025-12-23 05:07:57', '2025-12-23 05:08:12'),
-(13, 255, 'No fileee', 'hghg', '<p>hg</p>', 'uploads/cats/file/No-fileee_694a5deaae9e0.pdf', 'No-fileee_694a5deaae9e0.pdf', 'application/pdf', '760627', 'pdf', '2025-12-23 05:09:23', '2025-12-23 05:16:27'),
-(15, 257, 'with file4rt', 'jhjhj', '<p>jkkjh</p>', 'uploads/cats/file/with-file4rt_694a93f2a8363.pdf', 'with-file4rt_694a93f2a8363.pdf', 'application/pdf', '180471', 'pdf', '2025-12-23 09:06:19', '2025-12-23 09:07:00');
+(3, 272, 'cattt555', 'yytyy', '<p>uyuyu</p>', 'uploads/cats/file/cattt555_694bd41712d07.pdf', 'cattt555_694bd41712d07.pdf', 'application/pdf', '180471', 'pdf', '2025-12-24 07:52:55', '2025-12-24 07:52:55'),
+(4, 273, 'cARTYYU', 'trtrtrt', '<p>trtryytyu</p>', NULL, NULL, NULL, NULL, NULL, '2025-12-24 09:57:34', '2025-12-24 09:57:49'),
+(5, 274, 'cat4444 updated me', '5666565', '<p>6556556</p>', NULL, NULL, NULL, NULL, NULL, '2025-12-24 10:06:13', '2025-12-24 10:06:52'),
+(11, 280, 'dfdfdfdsfdf', 'ytyy', NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-24 12:59:46', '2025-12-24 13:13:39');
 
 -- --------------------------------------------------------
 
@@ -217,6 +217,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 DROP TABLE IF EXISTS `prods`;
 CREATE TABLE IF NOT EXISTS `prods` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `originid` int(11) NOT NULL,
   `catid` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `des` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -232,7 +233,17 @@ CREATE TABLE IF NOT EXISTS `prods` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `prods_catid_name_unique` (`catid`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `prods`
+--
+
+INSERT INTO `prods` (`id`, `originid`, `catid`, `name`, `des`, `dess`, `filer`, `filename`, `mime`, `sizer`, `extension`, `img`, `img2`, `created_at`, `updated_at`) VALUES
+(7, 53, 273, 'comm', 'fdfdfd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-24 10:40:02', '2025-12-24 10:40:04'),
+(14, 60, 272, 'tpdeleetdsdsd', 'ddsd', '<p>dds</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-24 13:19:28', '2025-12-24 13:19:29'),
+(17, 63, 274, 'Add through redisss', 'gfgf', '<p>gffdf</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-24 13:46:07', '2025-12-24 13:46:08'),
+(62, 62, 274, 'Update through rabbt MQ', 'gfgfg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-24 13:33:54', '2025-12-24 13:45:32');
 
 -- --------------------------------------------------------
 

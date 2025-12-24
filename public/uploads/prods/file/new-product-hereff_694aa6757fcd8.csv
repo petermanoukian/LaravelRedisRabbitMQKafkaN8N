@@ -1,5 +1,0 @@
-Instance_ID,Region,Service_Type,Avg_CPU_Util_Perc,Peak_Memory_GB,Avg_Network_Latency_ms,Data_Capture_Date
-I-prod-001,US-East,API Gateway,25.4,8.2,12.5,2025-11-27T00:00:00.000
-I-prod-002,US-East,Database Server,55.1,12.8,18.9,2025-11-27T00:00:00.000
-I-dev-010,EU-Central,Testing Environment,12,4.1,45.3,2025-11-27T00:00:00.000
-I-prod-003,US-West,Frontend Server,35.8,6.5,8.1,2025-11-27T00:00:00.000

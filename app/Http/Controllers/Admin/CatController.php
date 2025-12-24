@@ -6,21 +6,26 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CatRequest;
 use App\Http\Requests\FileUploadRequest;
 use App\Services\CatService;
+use App\Services\ProdService;
 use Illuminate\Http\Request;
-use App\Events\CatAdded;
-use App\Events\CatUpdated;
-use App\Events\CatDeleted;
+use App\Events\Cat\CatAdded;
+use App\Events\Cat\CatUpdated;
+use App\Events\Cat\CatDeleted;
+use App\Events\Prod\ProdDeleted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Redis;
 
 class CatController extends Controller
 {
     protected CatService $cats;
+    protected ProdService $prods;
 
-    public function __construct(CatService $cats)
+    public function __construct(CatService $cats, ProdService $prods)
     {
         $this->cats = $cats;
+        $this->prods = $prods;
     }
+
 
     public function index(Request $request)
     {
@@ -114,6 +119,14 @@ class CatController extends Controller
     public function destroy(int $id)
     {
         $catt =  $this->cats->findById($id);
+
+        $prods = $this->prods->findByCatId($id); 
+        foreach ($prods as $prod) 
+        {     
+            event(new ProdDeleted($prod->id, $prod->name, $prod->des)); 
+        }
+
+
         $this->cats->delete($id);
         //event(new CatDeleted($id));
         event(new CatDeleted($id, $catt->name, $catt->des));
@@ -125,10 +138,20 @@ class CatController extends Controller
     {
         $ids = $request->input('ids', []);
 
-        foreach ($ids as $id) {
+        foreach ($ids as $id) 
+        {
+            
+            
+            $prods = $this->prods->findByCatId($id); 
+            foreach ($prods as $prod) 
+            {     
+                event(new ProdDeleted($prod->id, $prod->name, $prod->des)); 
+            }
+
+            
             $catx = $this->cats->findById($id);
             if ($catx) {
-                event(new \App\Events\CatDeleted($id, $catx->name, $catx->des));
+                event(new CatDeleted($id, $catx->name, $catx->des));
             }
         }
 
