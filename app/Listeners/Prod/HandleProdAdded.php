@@ -24,7 +24,7 @@ class HandleProdAdded
     {
         Log::info('📦 New Prod added Line 26: ' . $event->prod->id);
         // Laravel internal job queue
-        //PublishProdAddedJob::dispatch($event->prod)->onQueue('prods_queue');
-        PublishProdAddedJob::dispatch($event->prod) ->onConnection('redis') ->onQueue('redis_broadcast');
+        PublishProdAddedJob::dispatch($event->prod)->onQueue('prods_queue');
+        //PublishProdAddedJob::dispatch($event->prod) ->onConnection('redis') ->onQueue('redis_broadcast');
     }
 }

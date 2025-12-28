@@ -39,17 +39,34 @@ class PublishProdDeletedJob implements ShouldQueue
             'des'   => $this->des,
         ];
 
-        // ✅ SQLite backup: DELETE the row completely
-        DB::connection('sqlite_backupdb')
-            ->table('prods')
-            ->where('id', $this->id)
-            ->delete();
+
+        try {
+            DB::connection('sqlite_backupdb')
+                ->table('prods')
+                ->where('id', $this->id)
+                ->delete();
+            \Log::info("✅ SQLite delete succeeded for prod {$this->id}");
+        } catch (\Exception $e) {
+            \Log::error("❌ SQLite delete failed: " . $e->getMessage(), [
+                'prod_id' => $this->id,
+            ]);
+        }
 
         // ✅ MySQL backup: DELETE the row completely
-        DB::connection('mysql')
-            ->table('prods')
-            ->where('originid', $this->id)
-            ->delete();
+        try {
+            DB::connection('mysql')
+                ->table('prods')
+                ->where('originid', $this->id)
+                ->delete();
+            \Log::info("✅ MySQL delete succeeded for prod {$this->id}");
+        } catch (\Exception $e) {
+            \Log::error("❌ MySQL delete failed: " . $e->getMessage(), [
+                'prod_id' => $this->id,
+            ]);
+        }
+
+
+        
 
         // ✅ Kafka publish
         try {

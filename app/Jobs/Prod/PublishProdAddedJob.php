@@ -61,22 +61,9 @@ class PublishProdAddedJob implements ShouldQueue
             'updated_at' => now(),
         ];
 
-        $payloadmysql = [
-            'originid'   => $this->prod->id,
-            'catid'         => $this->prod->catid,
-            'name'       => $this->prod->name,
-            'filer'      => $this->prod->filer,
-            'filename'   => $this->prod->filename,
-            'des'        => $this->prod->des,
-            'dess'       => $this->prod->dess,
-            'mime'       => $this->prod->mime,
-            'sizer'      => $this->prod->sizer,
-            'extension'  => $this->prod->extension,
-            'img'        => $this->prod->img,
-            'img2'       => $this->prod->img2,
-            'created_at' => $this->prod->created_at,
-            'updated_at' => now(),
-        ];
+        $payloadmysql = $payloadsqllite; 
+        unset($payloadmysql['id']); 
+        $payloadmysql['originid'] = $this->prod->id;
 
         // ✅ SQLite insert
         try {

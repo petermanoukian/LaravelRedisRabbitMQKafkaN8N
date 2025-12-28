@@ -1,0 +1,498 @@
+[{
+  "_id": {
+    "$oid": "69515e82009727b912230556"
+  },
+  "Event:cat.added\nid:350\nName:category1111\nFilename:category1111_69515e817430c.pdf\nFile:uploads/cats/file/category1111_69515e817430c.pdf\nFileUrl:http://localhost:8001/uploads/cats/file/category1111_69515e817430c.pdf\nMime:application/pdf\nSize:180471\nFileExtension: pdf\nShortDetails: detals 111\nLargeDetails:<p>more details heereee</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515e96009727b912230557"
+  },
+  "Event:cat.added\nid:351\nName:category 222\nFilename:category-222_69515e94869b7.xlsx\nFile:uploads/cats/file/category-222_69515e94869b7.xlsx\nFileUrl:http://localhost:8001/uploads/cats/file/category-222_69515e94869b7.xlsx\nMime:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\nSize:5175\nFileExtension: xlsx\nShortDetails: trttr\nLargeDetails:<p>trtrtrr</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515ea5009727b912230558"
+  },
+  "Event:cat.added\nid:352\nName:excel111\nFilename:excel111_69515ea3c38a6.xlsx\nFile:uploads/cats/file/excel111_69515ea3c38a6.xlsx\nFileUrl:http://localhost:8001/uploads/cats/file/excel111_69515ea3c38a6.xlsx\nMime:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\nSize:5175\nFileExtension: xlsx\nShortDetails: gfgfg\nLargeDetails:<p>gfgf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515eb0009727b912230559"
+  },
+  "Event:cat.added\nid:353\nName:csv11\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:<p>gfgfdgf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515ecd009727b91223055a"
+  },
+  "Event:cat.added\nid:354\nName:categoryy555\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh\nLargeDetails:<p>hghggh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515ed8009727b91223055b"
+  },
+  "Event:cat.updated\nid:353\nName:csv11 - updateddddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:<p>gfgfdgf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515ee4009727b91223055c"
+  },
+  "Event:cat.added\nid:355\nName:cat66666\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69515ef2009727b91223055d"
+  },
+  "Event:cat.added\nid:356\nName:categoryy777\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: ghghgh\nLargeDetails:<p>hghgh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f00009727b91223055e"
+  },
+  "Event:cat.updated\nid:355\nName:cat66666 _updatedddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh updatedddd\nLargeDetails:<p>ffdfdfddsf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f0e009727b91223055f"
+  },
+  "Event:cat.updated\nid:350\nName:upodted category 11111\nFilename:category1111_69515e817430c.pdf\nFile:uploads/cats/file/category1111_69515e817430c.pdf\nFileUrl:http://localhost:8001/uploads/cats/file/category1111_69515e817430c.pdf\nMime:application/pdf\nSize:180471\nFileExtension: pdf\nShortDetails: detals 111\nLargeDetails:<p>more details heereee</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f19009727b912230560"
+  },
+  "Event:cat.added\nid:357\nName:cat78899h\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: ghgh\nLargeDetails:<p>hhfgh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f2b009727b912230561"
+  },
+  "Event:cat.added\nid:358\nName:cat10000\nFilename:cat10000_69515f29c8aa3.xlsx\nFile:uploads/cats/file/cat10000_69515f29c8aa3.xlsx\nFileUrl:http://localhost:8001/uploads/cats/file/cat10000_69515f29c8aa3.xlsx\nMime:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\nSize:5175\nFileExtension: xlsx\nShortDetails: hfghh\nLargeDetails:<p>ghghgf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f51009727b912230562"
+  },
+  "Event:cat.added\nid:359\nName:cat56567\nFilename:cat56567_69515f4e76d2f.csv\nFile:uploads/cats/file/cat56567_69515f4e76d2f.csv\nFileUrl:http://localhost:8001/uploads/cats/file/cat56567_69515f4e76d2f.csv\nMime:text/csv\nSize:398\nFileExtension: csv\nShortDetails: jhjhj\nLargeDetails:<p>jhjhj</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f6b009727b912230563"
+  },
+  "Event:cat.added\nid:360\nName:deleet2345\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh\nLargeDetails:<p>hhgh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515f76009727b912230564"
+  },
+  "Event:cat.added\nid:361\nName:deleet 223ff\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69515f82009727b912230565"
+  },
+  "Event:cat.added\nid:362\nName:nondelet 345\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfgfd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69515f8d009727b912230566"
+  },
+  "Event:cat.added\nid:363\nName:yes deleteee\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfgf\nLargeDetails:<p>gfgf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515fa1009727b912230567"
+  },
+  "Event:cat.updated\nid:359\nName:Full update34444  to pdffff\nFilename:Full-update34444--to-pdffff_69515f9f40c97.pdf\nFile:uploads/cats/file/Full-update34444--to-pdffff_69515f9f40c97.pdf\nFileUrl:http://localhost:8001/uploads/cats/file/Full-update34444--to-pdffff_69515f9f40c97.pdf\nMime:application/pdf\nSize:180471\nFileExtension: pdf\nShortDetails: jhjhj\nLargeDetails:<p>jhjhj</p>": null
+},
+{
+  "_id": {
+    "$oid": "69515fac009727b912230568"
+  },
+  "Event:cat.added\nid:364\nName:deleet 45\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghghg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69515fbb009727b912230569"
+  },
+  "Event:cat.added\nid:365\nName:dleet46\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516018009727b91223056a"
+  },
+  "Event:cat.updated\nid:357\nName:upadte999\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: ghgh\nLargeDetails:<p>hhfgh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516023009727b91223056b"
+  },
+  "Event:cat.updated\nid:356\nName:update8888\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: ghghgh\nLargeDetails:<p>hghgh</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951602e009727b91223056c"
+  },
+  "Event:cat.updated\nid:354\nName:categoryy555upodateddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh\nLargeDetails:<p>hghggh</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516039009727b91223056d"
+  },
+  "Event:cat.updated\nid:355\nName:ONCEEGAGAInb_updatedddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh updatedddd\nLargeDetails:<p>ffdfdfddsf</p>": null
+},
+{
+  "_id": {
+    "$oid": "695160ff009727b91223056e"
+  },
+  "Event:cat.added\nid:366\nName:new 1111\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:<p>gfgfd</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951610a009727b91223056f"
+  },
+  "Event:cat.added\nid:367\nName:new2\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:<p>gffffg</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516116009727b912230570"
+  },
+  "Event:cat.added\nid:368\nName:new 333\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:<p>ggfdfdf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516121009727b912230571"
+  },
+  "Event:cat.added\nid:369\nName:new4444\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgf\nLargeDetails:<p>gffg</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951612c009727b912230572"
+  },
+  "Event:cat.added\nid:370\nName:new56677\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: jhjhj\nLargeDetails:<p>jhjjhhj</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951613b009727b912230573"
+  },
+  "Event:cat.added\nid:371\nName:new6788\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: jhh\nLargeDetails:<p>jhjhj</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516146009727b912230574"
+  },
+  "Event:cat.updated\nid:370\nName:Upodate2222\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: jhjhj\nLargeDetails:<p>jhjjhhj</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516151009727b912230575"
+  },
+  "Event:cat.updated\nid:369\nName:update333333\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgf\nLargeDetails:<p>gffg</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951615c009727b912230576"
+  },
+  "Event:cat.updated\nid:368\nName:uodate444\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:<p>ggfdfdf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516167009727b912230577"
+  },
+  "Event:cat.added\nid:372\nName:new456\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516172009727b912230578"
+  },
+  "Event:cat.added\nid:373\nName:new457\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgffg\nLargeDetails:<p>gfgfg</p>": null
+},
+{
+  "_id": {
+    "$oid": "6951617e009727b912230579"
+  },
+  "Event:cat.updated\nid:367\nName:new2_updatedddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:<p>gffffg</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516189009727b91223057a"
+  },
+  "Event:cat.added\nid:374\nName:new3\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516194009727b91223057b"
+  },
+  "Event:cat.added\nid:375\nName:new444\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695161a2009727b91223057c"
+  },
+  "Event:cat.updated\nid:362\nName:nondelet 345 is nopw upatedddd\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfgfd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695161c3009727b91223057d"
+  },
+  "Event:cat.updated\nid:373\nName:new457 updated to new458\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgffg\nLargeDetails:<p>gfgfg</p>": null
+},
+{
+  "_id": {
+    "$oid": "695161ce009727b91223057e"
+  },
+  "Event:cat.updated\nid:374\nName:new3 updated to new4\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695161d9009727b91223057f"
+  },
+  "Event:cat.added\nid:376\nName:another111\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfffg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695161e4009727b912230580"
+  },
+  "Event:cat.added\nid:377\nName:another2\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695161ef009727b912230581"
+  },
+  "Event:cat.added\nid:378\nName:another3\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfffdd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516203009727b912230582"
+  },
+  "Event:cat.updated\nid:375\nName:new444 upodate dme on the last minutee\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghgg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951622d009727b912230583"
+  },
+  "Event:cat.added\nid:379\nName:deleet11\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fff\nLargeDetails:<p>ffdsf</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516238009727b912230584"
+  },
+  "Event:cat.added\nid:380\nName:deleet2222\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516243009727b912230585"
+  },
+  "Event:cat.added\nid:381\nName:deleet3333\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: ffdfdf\nLargeDetails:<p>fffdffd</p>": null
+},
+{
+  "_id": {
+    "$oid": "69516252009727b912230586"
+  },
+  "Event:cat.added\nid:382\nName:delet4444\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951625d009727b912230587"
+  },
+  "Event:cat.added\nid:383\nName:deleet5555\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfgdfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516268009727b912230588"
+  },
+  "Event:cat.updated\nid:382\nName:in betrwee deletee\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: gfggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516273009727b912230589"
+  },
+  "Event:cat.added\nid:384\nName:in between dleet 222\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: fddfdsdf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951627e009727b91223058a"
+  },
+  "Event:cat.added\nid:385\nName:delet 66\nFilename:\nFile:\nFileUrl:http://localhost:8001/\nMime:\nSize:\nFileExtension: \nShortDetails: hghghg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951629f009727b91223058b"
+  },
+  "Event:cat.deleted\nid:383\nName:deleet5555\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgdfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162aa009727b91223058c"
+  },
+  "Event:cat.deleted\nid:381\nName:deleet3333\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: ffdfdf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162b5009727b91223058d"
+  },
+  "Event:cat.deleted\nid:380\nName:deleet2222\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162c0009727b91223058e"
+  },
+  "Event:cat.deleted\nid:379\nName:deleet11\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: fff\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162cb009727b91223058f"
+  },
+  "Event:cat.deleted\nid:377\nName:another2\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162d6009727b912230590"
+  },
+  "Event:cat.deleted\nid:378\nName:another3\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfffdd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695162e2009727b912230591"
+  },
+  "Event:cat.deleted\nid:385\nName:delet 66\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: hghghg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516335009727b912230592"
+  },
+  "Event:cat.deleted\nid:384\nName:in between dleet 222\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: fddfdsdf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516340009727b912230593"
+  },
+  "Event:cat.deleted\nid:382\nName:in betrwee deletee\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfggf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951634c009727b912230594"
+  },
+  "Event:cat.deleted\nid:376\nName:another111\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfffg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516357009727b912230595"
+  },
+  "Event:cat.deleted\nid:375\nName:new444 upodate dme on the last minutee\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: hghgg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516362009727b912230596"
+  },
+  "Event:cat.deleted\nid:374\nName:new3 updated to new4\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951636d009727b912230597"
+  },
+  "Event:cat.deleted\nid:373\nName:new457 updated to new458\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgffg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516378009727b912230598"
+  },
+  "Event:cat.deleted\nid:372\nName:new456\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516383009727b912230599"
+  },
+  "Event:cat.deleted\nid:371\nName:new6788\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: jhh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951638e009727b91223059a"
+  },
+  "Event:cat.deleted\nid:370\nName:Upodate2222\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: jhjhj\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951639a009727b91223059b"
+  },
+  "Event:cat.deleted\nid:369\nName:update333333\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695163a5009727b91223059c"
+  },
+  "Event:cat.deleted\nid:368\nName:uodate444\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695163b0009727b91223059d"
+  },
+  "Event:cat.deleted\nid:367\nName:new2_updatedddd\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695163bb009727b91223059e"
+  },
+  "Event:cat.deleted\nid:366\nName:new 1111\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695163c6009727b91223059f"
+  },
+  "Event:cat.deleted\nid:362\nName:nondelet 345 is nopw upatedddd\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfgfd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695163d1009727b9122305a0"
+  },
+  "Event:cat.deleted\nid:358\nName:cat10000\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: hfghh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516689009727b9122305a1"
+  },
+  "Event:cat.deleted\nid:357\nName:upadte999\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: ghgh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "69516694009727b9122305a2"
+  },
+  "Event:cat.deleted\nid:356\nName:update8888\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: ghghgh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "6951669f009727b9122305a3"
+  },
+  "Event:cat.deleted\nid:355\nName:ONCEEGAGAInb_updatedddd\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh updatedddd\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695166aa009727b9122305a4"
+  },
+  "Event:cat.deleted\nid:354\nName:categoryy555upodateddd\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: hghgh\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695166b6009727b9122305a5"
+  },
+  "Event:cat.deleted\nid:353\nName:csv11 - updateddddd\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: fgfgf\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695166c1009727b9122305a6"
+  },
+  "Event:cat.deleted\nid:352\nName:excel111\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: gfgfg\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695166cc009727b9122305a7"
+  },
+  "Event:cat.deleted\nid:351\nName:category 222\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: trttr\nLargeDetails:": null
+},
+{
+  "_id": {
+    "$oid": "695166d7009727b9122305a8"
+  },
+  "Event:cat.deleted\nid:350\nName:upodted category 11111\nFilename:\nFile:\nFileUrl:\nMime:\nSize:\nFileExtension: \nShortDetails: detals 111\nLargeDetails:": null
+}]
