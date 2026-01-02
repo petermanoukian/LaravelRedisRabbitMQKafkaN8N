@@ -2,6 +2,8 @@
 #import types/Cat.graphql
 #import queries/CatQuery.graphql
 #import mutations/CatMutation.graphql
-
+#import types/Prod.graphql
+#import queries/ProdQuery.graphql
+#import mutations/ProdMutation.graphql
 
 

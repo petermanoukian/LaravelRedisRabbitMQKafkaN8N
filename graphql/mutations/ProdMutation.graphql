@@ -1,0 +1,39 @@
+extend type Mutation @admin(write: true) {
+  createProd(
+    catid: ID!
+    name: String!
+    des: String
+    dess: String
+    filer: String
+    img: Upload
+    img2: Upload
+    filename: String
+    mime: String
+    sizer: String
+    extension: String
+  ): Prod
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdMutation@createProd")
+
+  updateProd(
+    id: ID!
+    catid: ID
+    name: String
+    des: String
+    dess: String
+    filer: String
+    img: Upload
+    img2: Upload
+    filename: String
+    mime: String
+    sizer: String
+    extension: String
+  ): Prod
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdMutation@updateProd")
+
+  deleteProd(id: ID!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdMutation@deleteProd")
+
+  deleteProds(ids: [ID!]!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdMutation@deleteProds")
+}
+

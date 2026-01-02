@@ -1,8 +1,9 @@
 <?php
 
 namespace App\GraphQL\Mutations;
-use App\Events\CatAdded;
-use App\Events\CatUpdated;
+use App\Events\Cat\CatAdded; 
+use App\Events\Cat\CatUpdated; 
+use App\Events\Cat\CatDeleted;
 use App\Services\CatService;
 use App\Http\Requests\CatRequest;
 use Illuminate\Http\Request;
@@ -115,7 +116,7 @@ class CatMutation
 
         // Call the service delete method
         $this->cats->delete($id);
-        event(new \App\Events\CatDeleted($id, $catx->name, $catx->des));
+        event(new CatDeleted($id, $catx->name, $catx->des));
         return true;
     }
 
@@ -132,13 +133,11 @@ class CatMutation
             $catx = $this->cats->findById($id);
             if ($catx) {
                 $this->cats->delete($id);
-                event(new \App\Events\CatDeleted($id, $catx->name, $catx->des));
+                event(new CatDeleted($id, $catx->name, $catx->des));
             }
         }
 
         return true;
     }
-
-
 
 }

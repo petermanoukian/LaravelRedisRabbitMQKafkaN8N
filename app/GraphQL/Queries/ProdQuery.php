@@ -2,66 +2,33 @@
 
 namespace App\GraphQL\Queries;
 
+use App\Models\Prod;
 use App\Models\Cat;
 
-class CatQuery
+class ProdQuery
 {
     public function all($root, array $args)
     {
-        return Cat::all();
+        return Prod::all();
     }
 
     public function find($root, array $args)
     {
-        return Cat::find($args['id']);
+        return Prod::find($args['id']);
     }
+
 
     public function findByNameExact($root, array $args)
     {
         $name = strtolower($args['name']);
-
-        return Cat::whereRaw('LOWER(name) = ?', [$name])->first();
+        return Prod::whereRaw('LOWER(name) = ?', [$name])->first();
     }
 
-
-    public function findCatsByName($root, array $args)
-    {
-        $name = strtolower($args['name']);
-        $mode = strtolower($args['mode'] ?? 'contains');
-
-        $query = Cat::query();
-
-        switch ($mode) {
-            case 'exact':
-                $query->whereRaw('LOWER(name) = ?', [$name]);
-                break;
-
-            case 'starts':
-                $query->whereRaw('LOWER(name) LIKE ?', [$name.'%']);
-                break;
-
-            case 'ends':
-                $query->whereRaw('LOWER(name) LIKE ?', ['%'.$name]);
-                break;
-
-            case 'like':
-            case 'close':
-            case 'contains':
-            default:
-                $query->whereRaw('LOWER(name) LIKE ?', ['%'.$name.'%']);
-        }
-
-        return $query->get();
-    }
-
-
-    public function findCatsByNameOrDetail($root, array $args)
+    public function findProdsByNameOrDetail($root, array $args)
     {
         $search   = $args['search'];
-        $mode     = strtolower($args['mode'] ?? 'contains'); // default to contains
-        $operator = strtolower($args['operator'] ?? 'or');   // default to or
-
-        // Normalize search term for case-insensitive matching
+        $mode     = strtolower($args['mode'] ?? 'contains');
+        $operator = strtolower($args['operator'] ?? 'or');
         $searchLower = strtolower($search);
 
         switch ($mode) {
@@ -70,29 +37,23 @@ class CatQuery
                 $nameExpr = $searchLower;
                 $desExpr  = $searchLower;
                 break;
-
             case 'starts':
                 $op = 'like';
                 $nameExpr = "{$searchLower}%";
                 $desExpr  = "{$searchLower}%";
                 break;
-
             case 'ends':
                 $op = 'like';
                 $nameExpr = "%{$searchLower}";
                 $desExpr  = "%{$searchLower}";
                 break;
-
-            case 'like':   // alias for contains
-            case 'close':  // alias for contains
-            case 'contains':
-            default:
+            default: // contains
                 $op = 'like';
                 $nameExpr = "%{$searchLower}%";
                 $desExpr  = "%{$searchLower}%";
         }
 
-        $query = Cat::query();
+        $query = Prod::query();
 
         if ($operator === 'and') {
             if ($op === '=') {
@@ -118,11 +79,59 @@ class CatQuery
     }
 
 
-    public function last($_, array $args)
+
+
+    public function findProdsByName($root, array $args)
     {
-        // Order by ID descending and take the first record
-        return Cat::orderBy('id', 'desc')->first();
+        $name = strtolower($args['name']);
+        $mode = strtolower($args['mode'] ?? 'contains');
+
+        $query = Prod::query();
+
+        switch ($mode) {
+            case 'exact':
+                $query->whereRaw('LOWER(name) = ?', [$name]);
+                break;
+
+            case 'starts':
+                $query->whereRaw('LOWER(name) LIKE ?', [$name.'%']);
+                break;
+
+            case 'ends':
+                $query->whereRaw('LOWER(name) LIKE ?', ['%'.$name]);
+                break;
+
+            case 'like':
+            case 'close':
+            case 'contains':
+            default:
+                $query->whereRaw('LOWER(name) LIKE ?', ['%'.$name.'%']);
+        }
+
+        return $query->get();
+    }
+
+    public function findProdByCid($root, array $args)
+    {
+        return Prod::where('catid', $args['catid'])->get();
+    }
+
+    public function findProdByCatName($root, array $args)
+    {
+        $catname = strtolower($args['catname']);
+        $cat = Cat::whereRaw('LOWER(name) = ?', [$catname])->first();
+
+        if (!$cat) {
+            return collect(); // empty collection if no category found
+        }
+
+        return Prod::where('catid', $cat->id)->get();
     }
 
 
+
+    public function last($_, array $args)
+    {
+        return Prod::orderBy('id', 'desc')->first();
+    }
 }

@@ -1,0 +1,17 @@
+type Prod {
+  id: ID!
+  catid: ID
+  name: String!
+  des: String
+  dess: String
+  filer: String
+  img: String
+  img2: String
+  filename: String
+  mime: String
+  sizer: String
+  extension: String
+  created_at: DateTime
+  updated_at: DateTime
+  cat: Cat @belongsTo
+}

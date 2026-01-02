@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Api\AuthService;
 use App\Http\Requests\Api\LoginRequest;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -17,10 +18,13 @@ class AuthController extends Controller
         return response()->json($this->auth->checkAuth($request));
     }
 
-
-    
     public function csrfCookie(Request $request): JsonResponse
     {
+        \Log::info('CSRF cookie requested', 
+        [ 'headers' => $request->headers->all(), 
+        'cookies' => $request->cookies->all(), 
+        ]); 
+        
         return response()->json($this->auth->confirmCsrf());
     }
 
@@ -31,6 +35,13 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request): JsonResponse
     {
+        
+        \Log::info('Login route hit', 
+        [ 'email' => $request->input('email'), 
+        'headers' => $request->headers->all(), 
+        'cookies' => $request->cookies->all(), 
+        ]);
+        
         return response()->json($this->auth->handleLogin($request));
     }
 

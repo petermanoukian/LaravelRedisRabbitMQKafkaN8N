@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\DB;
 use RdKafka\Conf;
 use RdKafka\Producer;
+use Illuminate\Support\Facades\Log;
 
 class PublishProdDeletedJob implements ShouldQueue
 {
@@ -69,6 +70,57 @@ class PublishProdDeletedJob implements ShouldQueue
         
 
         // ✅ Kafka publish
+
+
+
+// ✅ N8N Webhook notification (single endpoint with eventtype)
+    try {
+        Log::info('🔎 N8N_DOMAIN value from env()', [
+            'N8N_DOMAIN' => env('N8N_DOMAIN')
+        ]);
+
+        $webhookUrl = env('N8N_DOMAIN') . '/webhook/kafkaprod'; // unified endpoint
+
+        $webhookPayload = [
+            'event' => 'prod.deleted',
+            'data'  => [
+                'id'        => $this->id,
+                'name'      => $this->name,
+                'des'       => $this->des,
+                'eventtype' => 'prod.deleted'
+            ]
+        ];
+
+        $ch = curl_init($webhookUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhookPayload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json'
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200) {
+            \Log::info("✅ N8N webhook delete called successfully");
+        } else {
+            \Log::error("❌ N8N webhook delete failed", [
+                'http_code' => $httpCode,
+                'response'  => $response
+            ]);
+        }
+    } catch (\Exception $e) {
+        \Log::error("❌ N8N webhook delete exception: " . $e->getMessage());
+    }
+
+
+
+
+
+        /*
         try {
             $conf = new Conf();
             $conf->set('bootstrap.servers', 'localhost:9092');
@@ -86,7 +138,7 @@ class PublishProdDeletedJob implements ShouldQueue
         } catch (\Exception $e) {
             \Log::error("❌ Kafka exception on prod delete: " . $e->getMessage());
         }
-
+        */
         \Log::info("📦 Prod delete published + removed from SQLite/MySQL: " . json_encode($payload));
     }
 }

@@ -14,8 +14,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/check-auth', [AuthController::class, 'checkAuth']);
     Route::get('/user', [AuthController::class, 'loggedUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
-
-    
 });
 
 

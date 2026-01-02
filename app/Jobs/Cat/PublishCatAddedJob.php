@@ -191,7 +191,8 @@ class PublishCatAddedJob implements ShouldQueue
         try 
         {
             $conf = new \RdKafka\Conf();
-            $conf->set('bootstrap.servers', 'localhost:9092');
+            //$conf->set('bootstrap.servers', 'localhost:9092');
+            $conf->set('bootstrap.servers', '127.0.0.1:9092');
             
             // CRITICAL: Add delivery report callback
             $conf->setDrMsgCb(function ($kafka, $message) {

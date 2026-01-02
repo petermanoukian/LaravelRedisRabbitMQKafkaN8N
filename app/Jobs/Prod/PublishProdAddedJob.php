@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redis;
 use RdKafka\Conf;
 use RdKafka\Producer;
 
+
 class PublishProdAddedJob implements ShouldQueue
 {
     use Queueable;
@@ -123,9 +124,52 @@ class PublishProdAddedJob implements ShouldQueue
         }
 
         // ✅ Kafka block
+
+// ✅ N8N Webhook notification
+        try {
+
+            \Log::info('🔎 N8N_DOMAIN value from env()', [
+                'N8N_DOMAIN' => env('N8N_DOMAIN')
+            ]);
+
+            $webhookUrl = env('N8N_DOMAIN') . '/webhook/kafkaprod';
+
+            
+            $webhookPayload = [
+                'event' => 'prod.added',
+                'data' => $payload
+            ];
+            
+            $ch = curl_init($webhookUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhookPayload));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/json'
+            ]);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            if ($httpCode === 200) {
+                \Log::info("✅ N8N webhook called successfully");
+            } else {
+                \Log::error("❌ N8N webhook failed", ['http_code' => $httpCode, 'response' => $response]);
+            }
+        } catch (\Exception $e) {
+            \Log::error("❌ N8N webhook exception: " . $e->getMessage());
+        }
+
+
+
+
+        /*
         try {
             $conf = new Conf();
-            $conf->set('bootstrap.servers', 'localhost:9092');
+            //$conf->set('bootstrap.servers', 'localhost:9092');
+            $conf->set('bootstrap.servers', '127.0.0.1:9092');
 
             $conf->setDrMsgCb(function ($kafka, $message) {
                 if ($message->err) {
@@ -160,6 +204,8 @@ class PublishProdAddedJob implements ShouldQueue
         } catch (\Exception $e) {
             \Log::error("❌ Kafka exception: " . $e->getMessage());
         }
+
+        */
 
         \Log::info("📦 Published Prod + backups attempted (SQLite/MySQL/Redis/Kafka)", [
             'prod_id' => $this->prod->id,

@@ -58,13 +58,12 @@ class AuthService
     }
 
 
-
-
     public function handleLogin(LoginRequest $request): array|JsonResponse
     {
         $user = $this->users->findByEmail($request->email);
         //$ip = $request->ip();
-        $ip= '::2'; 
+        //$ip= '::2'; 
+        $ip = $request->input('ipp', '::2');
         if (! $user || ! Hash::check($request->password, $user->password)) {
             Log::warning('Login failed', [
                 'email' => $request->email,

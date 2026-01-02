@@ -138,7 +138,8 @@ class PublishCatUpdatedJob implements ShouldQueue
         // ✅ Kafka publish
         try {
             $conf = new Conf();
-            $conf->set('bootstrap.servers', 'localhost:9092');
+            //$conf->set('bootstrap.servers', 'localhost:9092');
+            $conf->set('bootstrap.servers', '127.0.0.1:9092');
 
             $conf->setDrMsgCb(function ($kafka, $message) {
                 if ($message->err) {

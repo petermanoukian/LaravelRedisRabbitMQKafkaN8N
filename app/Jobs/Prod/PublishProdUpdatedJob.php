@@ -119,10 +119,12 @@ class PublishProdUpdatedJob implements ShouldQueue
         }
 
         // ✅ Kafka publish
+
+        /*
         try {
             $conf = new Conf();
-            $conf->set('bootstrap.servers', 'localhost:9092');
-
+            //$conf->set('bootstrap.servers', 'localhost:9092');
+            $conf->set('bootstrap.servers', '127.0.0.1:9092');
             $conf->setDrMsgCb(function ($kafka, $message) {
                 if ($message->err) {
                     Log::error("❌ Kafka delivery failed: " . $message->errstr());
@@ -154,6 +156,51 @@ class PublishProdUpdatedJob implements ShouldQueue
         } catch (\Exception $e) {
             Log::error("❌ Kafka exception: " . $e->getMessage());
         }
+        */
+
+        // ✅ N8N Webhook notification
+        // ✅ N8N Webhook notification (single endpoint with eventtype inside data)
+        try {
+            Log::info('🔎 N8N_DOMAIN value from env()', [
+                'N8N_DOMAIN' => env('N8N_DOMAIN')
+            ]);
+
+            $webhookUrl = env('N8N_DOMAIN') . '/webhook/kafkaprod'; // unified endpoint
+
+            $payload['eventtype'] = 'prod.updated'; // embed eventtype directly in data
+
+            $webhookPayload = [
+                'event' => 'prod.updated',
+                'data'  => $payload
+            ];
+
+            $ch = curl_init($webhookUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhookPayload));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/json'
+            ]);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200) {
+                Log::info("✅ N8N webhook update called successfully");
+            } else {
+                Log::error("❌ N8N webhook update failed", [
+                    'http_code' => $httpCode,
+                    'response'  => $response
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::error("❌ N8N webhook update exception: " . $e->getMessage());
+        }
+
+
+
 
         Log::info("📦 Prod updated + backups attempted (SQLite/MySQL/Redis/Kafka)", [
             'prod_id' => $this->prod->id,

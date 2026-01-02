@@ -1,0 +1,32 @@
+type Query @admin(read: true) {
+  prods: [Prod!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@all")
+
+  prod(id: ID!): Prod
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@find")
+
+  findProdsByName(name: String!, mode: String): [Prod!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdsByName")
+
+   findProdByNameExact(name: String!): Prod
+     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findByNameExact")
+
+    findProdsByNameOrDetail(
+    search: String!
+    mode: String
+    operator: String
+    ): [Prod!]!
+      @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdsByNameOrDetail")
+ 
+
+    findProdByCid(catid: ID!): [Prod!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdByCid")
+
+    findProdByCatName(catname: String!): [Prod!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdByCatName")
+
+
+
+  lastProd: Prod
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@last")
+}
