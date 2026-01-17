@@ -1,0 +1,21 @@
+extend type Query @admin(read: true) {
+  # Fetch all prodorders
+  prodorders: [Prodorder!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdorderQuery@all")
+
+  # Fetch a single prodorder by ID
+  prodorder(id: ID!): Prodorder
+    @field(resolver: "App\\GraphQL\\Queries\\ProdorderQuery@find")
+
+  # Find orders by product ID
+  findProdordersByProdid(prodid: ID!): [Prodorder!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdorderQuery@findByProdid")
+
+  # Find orders by customer name (optional mode for exact/contains)
+  findProdordersByCustomer(customer: String!, mode: String): [Prodorder!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdorderQuery@findByCustomer")
+
+  # Get the most recent order
+  lastProdorder: Prodorder
+    @field(resolver: "App\\GraphQL\\Queries\\ProdorderQuery@last")
+}

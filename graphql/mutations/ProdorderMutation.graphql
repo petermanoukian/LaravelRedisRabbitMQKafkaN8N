@@ -1,0 +1,22 @@
+extend type Mutation @admin(read: true, write: false) {
+  createProdorder(
+    prodid: ID!
+    quan: Int
+    customer: String
+  ): Prodorder
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdorderMutation@createProdorder")
+
+  updateProdorder(
+    id: ID!
+    prodid: ID
+    quan: Int
+    customer: String
+  ): Prodorder
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdorderMutation@updateProdorder")
+
+  deleteProdorder(id: ID!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdorderMutation@deleteProdorder")
+
+  deleteProdorders(ids: [ID!]!): Boolean
+    @field(resolver: "App\\GraphQL\\Mutations\\ProdorderMutation@deleteProdorders")
+}

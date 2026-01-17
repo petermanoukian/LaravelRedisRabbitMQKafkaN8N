@@ -1,0 +1,11 @@
+type Prodorder {
+  id: ID!
+  prodid: ID!
+  quan: Int!
+  customer: String
+  created_at: DateTime
+  updated_at: DateTime
+
+  # relation to product
+  prod: Prod
+}

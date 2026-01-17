@@ -14,6 +14,12 @@ use App\Services\Interface\ProdServiceInterface;
 use App\Repositories\Contracts\ProdRepositoryInterface;
 use App\Repositories\ProdRepository;
 use App\Services\ProdService;
+use App\Repositories\Contracts\ProdorderRepositoryInterface; 
+use App\Services\Interface\ProdorderServiceInterface; 
+// Implementations 
+use App\Repositories\ProdorderRepository; 
+use App\Services\ProdorderService;
+
 // Implementations              
 
 use App\Repositories\Contracts\UserRepositoryInterface;
@@ -32,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CatServiceInterface::class, CatService::class);
         $this->app->bind(ProdRepositoryInterface::class, ProdRepository::class);
         $this->app->bind(ProdServiceInterface::class, ProdService::class);
+
+        $this->app->bind(ProdorderRepositoryInterface::class, ProdorderRepository::class); 
+
+        $this->app->bind(ProdorderServiceInterface::class, ProdorderService::class);
         
     }
 

@@ -17,11 +17,26 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-
+/*
 Route::prefix('admin')
     ->name('api.admin.')
     ->middleware(['auth:sanctum', 'admin.type:2']) // enforce API admin type
     ->group(function () {
         require __DIR__ . '/api/admin/admin.php';
     });
+*/
+// Level 2 admins: read access
+Route::prefix('admin')
+    ->name('api.admin.')
+    ->middleware(['auth:sanctum', 'admin.type:2'])
+    ->group(function () {
+        require __DIR__ . '/api/admin/adminread.php';
+    });
 
+// Level 1 admins: write access
+Route::prefix('admin')
+    ->name('api.admin.')
+    ->middleware(['auth:sanctum', 'admin.type:1'])
+    ->group(function () {
+        require __DIR__ . '/api/admin/adminwrite.php';
+    });

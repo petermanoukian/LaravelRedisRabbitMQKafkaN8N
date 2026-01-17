@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProdController;
+use App\Http\Controllers\Admin\ProdorderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,11 @@ Route::prefix('prods')->name('prods.')->group(function () {
 
     Route::delete('/delete/{id}', [ProdController::class, 'destroy'])->name('destroy');
     Route::delete('/delete-many', [ProdController::class, 'destroyMany'])->name('destroyMany');
+});
+
+
+Route::prefix('prodorders')->name('prodorders.')->group(function () { 
+    Route::match(['get', 'post'], '/index', [ProdorderController::class, 'index']) ->name('index'); 
+    Route::get('/index-json', [ProdorderController::class, 'indexJson']) ->name('indexJson'); 
+    Route::get('/index-redis-json', [ProdorderController::class, 'indexRedisJson']) ->name('indexRedisJson'); 
 });

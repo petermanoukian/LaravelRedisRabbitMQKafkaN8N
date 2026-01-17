@@ -1,4 +1,4 @@
-type Mutation @admin(write: true) {
+extend type Mutation @admin(write: true) {
   createCat(
     name: String!
     des: String
@@ -21,9 +21,4 @@ type Mutation @admin(write: true) {
 
   deleteCats(ids: [ID!]!): Boolean
     @field(resolver: "App\\GraphQL\\Mutations\\CatMutation@deleteCats")
-
 }
-
-
-
-

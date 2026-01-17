@@ -5,5 +5,8 @@
 #import types/Prod.graphql
 #import queries/ProdQuery.graphql
 #import mutations/ProdMutation.graphql
+#import types/Prodorder.graphql 
+#import queries/ProdorderQuery.graphql 
+#import mutations/ProdorderMutation.graphql
 
 

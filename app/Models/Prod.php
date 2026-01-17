@@ -34,4 +34,10 @@ class Prod extends Model
     {
         return $this->belongsTo(Cat::class, 'catid');
     }
+
+
+    public function prodorders() 
+    { 
+        return $this->hasMany(Prodorder::class, 'prodid'); 
+    }
 }

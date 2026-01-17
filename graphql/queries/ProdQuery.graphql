@@ -1,4 +1,4 @@
-type Query @admin(read: true) {
+extend type Query @admin(read: true) {
   prods: [Prod!]!
     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@all")
 
@@ -8,24 +8,21 @@ type Query @admin(read: true) {
   findProdsByName(name: String!, mode: String): [Prod!]!
     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdsByName")
 
-   findProdByNameExact(name: String!): Prod
-     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findByNameExact")
+  findProdByNameExact(name: String!): Prod
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findByNameExact")
 
-    findProdsByNameOrDetail(
+  findProdsByNameOrDetail(
     search: String!
     mode: String
     operator: String
-    ): [Prod!]!
-      @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdsByNameOrDetail")
- 
+  ): [Prod!]!
+    @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdsByNameOrDetail")
 
-    findProdByCid(catid: ID!): [Prod!]!
+  findProdByCid(catid: ID!): [Prod!]!
     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdByCid")
 
-    findProdByCatName(catname: String!): [Prod!]!
+  findProdByCatName(catname: String!): [Prod!]!
     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@findProdByCatName")
-
-
 
   lastProd: Prod
     @field(resolver: "App\\GraphQL\\Queries\\ProdQuery@last")

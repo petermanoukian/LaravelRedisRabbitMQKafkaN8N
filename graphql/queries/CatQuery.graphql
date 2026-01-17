@@ -1,4 +1,4 @@
-type Query @admin(read: true) {
+extend type Query @admin(read: true) {
   cats: [Cat!]!
     @field(resolver: "App\\GraphQL\\Queries\\CatQuery@all")
 
@@ -21,4 +21,3 @@ type Query @admin(read: true) {
   lastCat: Cat
     @field(resolver: "App\\GraphQL\\Queries\\CatQuery@last")
 }
-

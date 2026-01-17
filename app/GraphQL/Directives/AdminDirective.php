@@ -45,6 +45,13 @@ GRAPHQL;
                     return $resolver($root, $args, $context, $resolveInfo);
                 }
 
+                // Admin = 3 → both READ and WRITE 
+                 
+                if ($level === 3 && ($read || $write)) 
+                { 
+                    return $resolver($root, $args, $context, $resolveInfo); 
+                }
+
                 throw new AuthorizationException('Insufficient admin privileges');
             };
         });

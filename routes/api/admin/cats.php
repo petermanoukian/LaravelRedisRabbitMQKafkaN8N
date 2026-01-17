@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\Admin\CatController;
 */
 
 Route::prefix('cats')->name('cats.')->group(function () {
+    /*
     Route::get('/', [CatController::class, 'index'])->name('index');
     Route::get('/index', [CatController::class, 'index'])->name('index');
 
@@ -30,4 +31,6 @@ Route::prefix('cats')->name('cats.')->group(function () {
     Route::delete('/delete-many', [CatController::class, 'destroyMany'])->name('destroyMany');
 
     Route::post('/', [CatController::class, 'store'])->name('store'); // standard API create
+
+    */
 });

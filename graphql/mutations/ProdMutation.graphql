@@ -36,4 +36,3 @@ extend type Mutation @admin(write: true) {
   deleteProds(ids: [ID!]!): Boolean
     @field(resolver: "App\\GraphQL\\Mutations\\ProdMutation@deleteProds")
 }
-
